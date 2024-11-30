@@ -44,8 +44,13 @@ def user_manager(request):
         try:
             
             if request.GET['user']:
-                user_nickname = request.GET['user']
-                
+                try:
+                    user_nickname = request.GET['user']
+                    user = User.objects.get(pk=user_nickname)
+                    serialiezer = UserSerializer(user)
+                    return Response(serialiezer.data)
+                except:
+                    return Response(status=status.HTTP_404_NOT_FOUND)
             else:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             

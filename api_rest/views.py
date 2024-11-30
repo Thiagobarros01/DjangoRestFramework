@@ -58,8 +58,18 @@ def user_manager(request):
             return Response(status=status.HTTP_400_BAD_REQUEST)       
 
           
-    
+    if request.method == 'POST':
 
+        try:
+            dados = request.data
+            serialiezer = UserSerializer(data=dados)
+            if serialiezer.is_valid():
+             serialiezer.save()      
+            
+            return Response(status=status.HTTP_201_CREATED)
+            
+        except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 

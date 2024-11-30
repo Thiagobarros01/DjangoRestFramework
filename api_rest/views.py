@@ -36,7 +36,24 @@ def get_by_nick(request,nick):
         serialiezer = UserSerializer(user)
         return Response(serialiezer.data)
 
+@api_view(['GET','PUT','POST','DELETE'])
+def user_manager(request):
 
+    if request.method == 'GET':
+    
+        try:
+            
+            if request.GET['user']:
+                user_nickname = request.GET['user']
+                
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+            
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)       
+
+          
+    
 
 
 

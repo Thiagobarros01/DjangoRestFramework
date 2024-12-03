@@ -40,7 +40,17 @@ def get_by_nick(request,nick):
 @api_view(['GET','POST','PUT','DELETE'])
 def user_manager(request):
     if request.method == 'GET':
-      ...
+      
+      try:
+            user = request.GET.get('user')   
+            user_nick = User.objects.get(pk=user)
+            serializer = UserSerializer(user_nick)
+            return Response(serializer.data,status=status.HTTP_200_OK)
+      except User.DoesNotExist:  # Caso o usuário não seja encontrado
+        return Response({'detail': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+          
+      except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
             
       
 

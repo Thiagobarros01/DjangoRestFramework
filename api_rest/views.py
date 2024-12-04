@@ -60,13 +60,11 @@ def user_manager(request):
           if serializer.is_valid():
             serializer.save()
             return Response(serializer.data,status=status.HTTP_201_CREATED)
-            
        except:
           return Response(status=status.HTTP_400_BAD_REQUEST)
 
     
-            
-        
+       
        
 
 

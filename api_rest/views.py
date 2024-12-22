@@ -53,37 +53,6 @@ def user_manager(request):
         return Response(status=status.HTTP_400_BAD_REQUEST)
             
       
-    if request.method == 'POST':
-       try:
-          new_user = request.data
-          serializer = UserSerializer(data = new_user)
-          if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data,status=status.HTTP_201_CREATED)
-       except:
-
-        
-          return Response(status=status.HTTP_400_BAD_REQUEST)
-
-    
-       
-    if request.method == 'PUT':
-       
-       nick = request.data['user_nickname']
-       try:
-        update_nick = User.objects.get(pk=nick)
-                
-       except:
-          Response(serializer.data,status=status.HTTP_404_NOT_FOUND)
-
-       serializer = UserSerializer(update_nick,data=request.data)
-
-       if serializer.is_valid():
-          serializer.save()
-          return Response(serializer.data,status=status.HTTP_202_ACCEPTED)
-       
-       return Response(status=status.HTTP_400_BAD_REQUEST)
-       
 
 
 

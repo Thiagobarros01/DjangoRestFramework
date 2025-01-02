@@ -52,14 +52,6 @@ def user_manager(request):
       except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
             
-      
-
-
-
-
-
-
-
 
 
 

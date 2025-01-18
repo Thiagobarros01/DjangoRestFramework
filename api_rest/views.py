@@ -98,6 +98,7 @@ def user_manager(request):
 
 
 
+
 #def  databaseEmDjango():
     
 #    data = User.objects.get(pk='thiago_nick')   #OBJETO

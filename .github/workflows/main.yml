@@ -1,0 +1,20 @@
+name: pipeline
+
+on: 
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+jobs:
+    ci:
+      runs-on: ubuntu-latest
+      steps:
+          - name: Autenticar no Docker Hub
+            run: echo "Executando comando Docker Login"
+          - name: Construção da imagem Docker
+            run: echo "Executando o comando Docker Docker Build"
+          - name: Envio da imagem Docker
+            run: echo "Executando o comando docker push"
+        
+      
+      
+  
